@@ -2,10 +2,17 @@
   <div class="my-container">
     <div class="grid">
       <div class="col-12">
-        <a href="javascript:;" class="my-navbar-toggle">
+        <a href="javascript:;" class="my-navbar-toggle" (click)="exibindoMenu = !exibindoMenu">
           <i class="pi pi-bars"></i>
         </a>
       </div>
     </div>
   </div>
+
+  <ul class="my-navbar-menu" [hidden]="!exibindoMenu">
+    <li class="my-navbar-usuario">Fulanno de Tal</li>
+    <li class="my-navbar-menuitem"><a href="#">Lançamentos</a></li>
+    <li class="my-navbar-menuitem"><a href="#">Pessoas</a></li>
+    <li class="my-navbar-menuitem"><a href="#">Log out</a></li>
+  </ul>
 </nav>
