@@ -1,0 +1,67 @@
+<div class="my-container">
+  <div class="grid">
+    <div class="col-12">
+      <h1>Lançamentos</h1>
+    </div>
+
+    <div class="col-12 p-fluid">
+      <label>Descrição</label>
+      <input pInputText type="text">
+    </div>
+
+    <div class="col-12">
+      <label style="display: block">Vencimento</label>
+      <input pInputText type="text">
+
+      <label class="my-margin">até</label>
+      <input pInputText type="text">
+    </div>
+
+    <div class="col-12">
+      <button pButton type="submit" label="Pesquisar"></button>
+    </div>
+  </div>
+
+  <div class="grid">
+    <div class="col-12">
+      <p-table [value]="lancamentos" [paginator]="true" [rows]="2" responsiveLayout="stack"
+        styleClass="p-datatable-gridlines">
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Pessoa</th>
+            <th>Descrição</th>
+            <th>Tipo</th>
+            <th>Pagamento</th>
+            <th>Vencimento</th>
+            <th>Valor</th>
+            <th>Ações</th>
+          </tr>
+        </ng-template>
+
+        <ng-template pTemplate="body" let-lancamentos>
+          <tr>
+            <td>{{lancamentos.pessoa}}</td>
+            <td>{{lancamentos.descricao}}</td>
+            <td>{{lancamentos.tipo}}</td>
+            <td class="my-col-data">{{lancamentos.dataPagamento}}</td>
+            <td class="my-col-data">{{lancamentos.dataVencimento}}</td>
+            <td class="my-col-valor">
+              <span [style.color]="lancamentos.tipo === 'DESPESA' ? 'red' : 'blue'">
+                {{lancamentos.valor}}
+              </span>
+            </td>
+
+            <td class="my-col-acoes">
+              <a pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top"></a>
+              <button pButton icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top"></button>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </div>
+
+  <div class="col-12">
+    <a pButton label="Novo Lançamento"></a>
+  </div>
+</div>
