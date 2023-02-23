@@ -10,9 +10,6 @@ label {
 }
 
 /* CLASSES PERSONALIZADAS */
-.my-margin {
-  margin: 0 .5em;
-}
 
 @media (min-width: 1200px) {
   .my-container {
@@ -20,3 +17,18 @@ label {
     margin: 0 auto;
   }
 }
+
+.my-col-data {
+  width: 120px;
+  text-align: center;
+}
+
+.my-col-valor {
+  width: 120px;
+  text-align: right!important;
+}
+
+.my-margin {
+  margin: 0 .5em;
+}
+

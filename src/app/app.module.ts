@@ -5,6 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { NgModule } from '@angular/core';
+import { TableModule } from 'primeng/table';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { NgModule } from '@angular/core';
     AppRoutingModule,
     BrowserModule,
     ButtonModule,
-    InputTextModule
+    InputTextModule,
+    TableModule
   ],
   providers: [],
   bootstrap: [AppComponent]
