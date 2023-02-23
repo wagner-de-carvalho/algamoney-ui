@@ -18,6 +18,15 @@ label {
   }
 }
 
+.my-col-acoes {
+  width: 120 px;
+  display: flex;
+}
+
+.my-col-acoes > a {
+  margin-right: 5px;
+}
+
 .my-col-data {
   width: 120px;
   text-align: center;

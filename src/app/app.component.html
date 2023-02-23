@@ -33,6 +33,7 @@
             <th>Pagamento</th>
             <th>Vencimento</th>
             <th>Valor</th>
+            <th>Ações</th>
           </tr>
         </ng-template>
 
@@ -43,11 +44,24 @@
             <td>{{lancamentos.tipo}}</td>
             <td class="my-col-data">{{lancamentos.dataPagamento}}</td>
             <td class="my-col-data">{{lancamentos.dataVencimento}}</td>
-            <td class="my-col-valor">{{lancamentos.valor}}</td>
+            <td class="my-col-valor">
+              <span [style.color]="lancamentos.tipo === 'DESPESA' ? 'red' : 'blue'">
+                {{lancamentos.valor}}
+              </span>
+            </td>
+
+            <td class="my-col-acoes">
+              <a pButton icon="pi pi-pencil"></a>
+              <button pButton icon="pi pi-trash"></button>
+            </td>
           </tr>
         </ng-template>
       </p-table>
     </div>
+  </div>
+
+  <div class="col-12">
+    <a pButton label="Novo Lançamento"></a>
   </div>
 </div>
 
