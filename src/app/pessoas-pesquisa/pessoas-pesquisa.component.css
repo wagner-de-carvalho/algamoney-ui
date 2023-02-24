@@ -1,0 +1,9 @@
+.my-col-status {
+  color: #404C51;
+  text-decoration: none;
+}
+
+
+.my-col-status a:hover {
+  text-decoration: underline;
+}
