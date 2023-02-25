@@ -43,11 +43,11 @@
             <td>{{lancamentos.pessoa}}</td>
             <td>{{lancamentos.descricao}}</td>
             <td>{{lancamentos.tipo}}</td>
-            <td class="my-col-data">{{lancamentos.dataPagamento}}</td>
-            <td class="my-col-data">{{lancamentos.dataVencimento}}</td>
+            <td class="my-col-data">{{lancamentos.dataPagamento | date: 'dd/MM/y'}}</td>
+            <td class="my-col-data">{{lancamentos.dataVencimento | date: 'dd/MM/y'}}</td>
             <td class="my-col-valor">
               <span [style.color]="lancamentos.tipo === 'DESPESA' ? 'red' : 'blue'">
-                {{lancamentos.valor}}
+                {{lancamentos.valor | currency: 'BRL'}}
               </span>
             </td>
 
