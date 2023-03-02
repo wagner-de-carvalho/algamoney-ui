@@ -6,5 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./lancamento-cadastro.component.css']
 })
 export class LancamentoCadastroComponent {
-
+  tipos = [
+    {label: 'Receita', value: 'RECEITA'},
+    {label: 'Despesa', value: 'DESPESA'}
+  ];
 }
