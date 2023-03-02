@@ -9,6 +9,20 @@ label {
   font-weight: bold;
 }
 
+a {
+  text-decoration: none;
+}
+
+a:hover,
+a:focus {
+  text-decoration: underline;
+}
+
+a.p-button:hover,
+a.p-button:focus {
+  text-decoration: none;
+}
+
 /* CLASSES PERSONALIZADAS */
 
 @media (min-width: 1200px) {
@@ -40,4 +54,5 @@ label {
 .my-margin {
   margin: 0 .5em;
 }
+
 
