@@ -21,7 +21,7 @@ export class LancamentosPesquisaComponent {
     },
     {
       tipo: 'DESPESA', descricao: 'Mensalidade de escola', dataVencimento: new Date(2023, 2, 5),
-      dataPagamento: '30/05/2023', valor: 800, pessoa: 'Escola Abelha Rainha'
+      dataPagamento: '22/03/2023', valor: 800, pessoa: 'Escola Abelha Rainha'
     },
     {
       tipo: 'RECEITA', descricao: 'Venda de carro', dataVencimento: new Date(2023, 3, 18),
