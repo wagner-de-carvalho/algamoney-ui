@@ -1,5 +1,5 @@
 <div class="my-container">
-  <form autocomplete="off">
+  <form #lancamentoForm="ngForm" autocomplete="off">
     <div class="grid">
       <div class="col-12">
         <h1>Novo Lançamento</h1>
@@ -11,7 +11,9 @@
 
       <div class="col-6 md:col-3 p-fluid">
         <label>Vencimento</label>
-        <p-calendar [showIcon]="true" dateFormat="dd/mm/yy"></p-calendar>
+        <p-calendar [showIcon]="true" dateFormat="dd/mm/yy" name="vencimento" ngModel #vencimento="ngModel" [required]="true"></p-calendar>
+
+        <app-message [control]="vencimento.control" error="required" text="Informe uma data de vencimento"></app-message>
       </div>
 
       <div class="col-6 md:col-3 p-fluid">
@@ -34,23 +36,32 @@
         <label>Valor <i class="pi pi-dollar" style="font-size: 0.9rem"></i></label>
         <input
           pInputText
+          [required]="true"
           type="text"
           placeholder="0,00"
           name="valor"
           currencyMask
           [options]="{prefix: 'R$ ', thousands: '.', decimal: ',', allowNegative: false}"
           ngModel
+          #valor="ngModel"
         />
+
+        <app-message [control]="valor.control" error="required" text="Informe um valor"></app-message>
+
       </div>
 
       <div class="col-12 md:col-6 p-fluid">
         <label>Categoria</label>
-        <p-dropdown [options]="categorias" placeholder="Selecione"></p-dropdown>
+        <p-dropdown [options]="categorias" placeholder="Selecione" [required]="true" name="categoria" ngModel #categoria="ngModel"></p-dropdown>
+
+        <app-message [control]="categoria.control" error="required" text="Informe uma categoria"></app-message>
       </div>
 
       <div class="col-12 md:col-6 p-fluid">
         <label>Pessoa</label>
-        <p-dropdown [options]="pessoas" [filter]="true" placeholder="Selecione"></p-dropdown>
+        <p-dropdown [options]="pessoas" name="pessoa" [filter]="true" [required]="true" ngModel #pessoa="ngModel" placeholder="Selecione"></p-dropdown>
+
+        <app-message [control]="pessoa.control" error="required" text="Informe uma pessoa"></app-message>
       </div>
 
       <div class="col-12 p-fluid">
@@ -60,7 +71,7 @@
 
 
       <div class="col-12" style="display: flex; align-items: center;">
-        <button pButton type="submit" label="Salvar"></button>
+        <button pButton type="submit" label="Salvar" [disabled]="lancamentoForm.invalid"></button>
         <button class="p-button-info" pButton type="button" label="Novo"></button>
         <a href="javascript:;">Voltar para pesquisa</a>
       </div>
