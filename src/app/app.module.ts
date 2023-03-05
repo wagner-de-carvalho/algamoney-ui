@@ -5,7 +5,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ButtonModule } from 'primeng/button';
 import { CalendarModule } from 'primeng/calendar';
-import { CurrencyMaskModule } from 'ng2-currency-mask';
 import { DropdownModule } from 'primeng/dropdown';
 import { FormsModule } from '@angular/forms';
 import { InputMaskModule } from 'primeng/inputmask';
@@ -16,24 +15,18 @@ import { SelectButtonModule } from 'primeng/selectbutton';
 import { TableModule } from 'primeng/table';
 import { TooltipModule } from 'primeng/tooltip';
 
-
-import { LancamentoCadastroComponent } from './lancamento-cadastro/lancamento-cadastro.component';
-import { LancamentosPesquisaComponent } from './lancamentos-pesquisa/lancamentos-pesquisa.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { PessoaCadastroComponent } from './pessoa-cadastro/pessoa-cadastro.component';
 import { PessoasPesquisaComponent } from './pessoas-pesquisa/pessoas-pesquisa.component';
 import { MessageComponent } from './message/message.component';
-import { LancamentosGridComponent } from './lancamentos-grid/lancamentos-grid.component';
+import { LancamentosModule } from './lancamentos/lancamentos.module';
 @NgModule({
   declarations: [
     AppComponent,
-    LancamentosPesquisaComponent,
     NavbarComponent,
     PessoasPesquisaComponent,
-    LancamentoCadastroComponent,
     PessoaCadastroComponent,
-    MessageComponent,
-    LancamentosGridComponent
+    MessageComponent
   ],
   imports: [
     AppRoutingModule,
@@ -41,12 +34,12 @@ import { LancamentosGridComponent } from './lancamentos-grid/lancamentos-grid.co
     BrowserAnimationsModule,
     ButtonModule,
     CalendarModule,
-    CurrencyMaskModule,
     DropdownModule,
     FormsModule,
     InputMaskModule,
     InputTextModule,
     InputTextareaModule,
+    LancamentosModule,
     SelectButtonModule,
     TableModule,
     TooltipModule,
