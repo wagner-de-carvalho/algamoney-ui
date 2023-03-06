@@ -12,7 +12,7 @@ import { FormControl, NgModel } from '@angular/forms';
 })
 export class MessageComponent {
   @Input() error: string = '';
-  @Input() control: FormControl<NgModel> = new FormControl;
+  @Input() control: any;
   @Input() text: string = '';
 
   temErro():boolean {
