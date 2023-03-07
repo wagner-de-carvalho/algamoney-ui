@@ -1,6 +1,4 @@
 import { AppComponent } from './app.component';
-import { AppRoutingModule } from './app-routing.module';
-
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ButtonModule } from 'primeng/button';
@@ -16,20 +14,15 @@ import { TableModule } from 'primeng/table';
 import { TooltipModule } from 'primeng/tooltip';
 
 import { NavbarComponent } from './navbar/navbar.component';
-import { PessoaCadastroComponent } from './pessoas/pessoa-cadastro/pessoa-cadastro.component';
-import { PessoasPesquisaComponent } from './pessoas/pessoas-pesquisa/pessoas-pesquisa.component';
-import { MessageComponent } from './message/message.component';
 import { LancamentosModule } from './lancamentos/lancamentos.module';
+import { AppRoutingModule } from './app-routing.module';
+import { PessoasModule } from './pessoas/pessoas.module';
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    PessoasPesquisaComponent,
-    PessoaCadastroComponent,
-    MessageComponent
   ],
   imports: [
-    AppRoutingModule,
     BrowserModule,
     BrowserAnimationsModule,
     ButtonModule,
@@ -43,6 +36,8 @@ import { LancamentosModule } from './lancamentos/lancamentos.module';
     SelectButtonModule,
     TableModule,
     TooltipModule,
+    AppRoutingModule,
+    PessoasModule
   ],
   providers: [],
   bootstrap: [AppComponent]
