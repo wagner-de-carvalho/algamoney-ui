@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { FormControl, NgModel } from '@angular/forms';
 
 @Component({
   selector: 'app-message',
