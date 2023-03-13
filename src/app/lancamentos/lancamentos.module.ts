@@ -16,6 +16,7 @@ import { AppRoutingModule } from '../app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { CalendarModule } from 'primeng/calendar';
 import { CurrencyMaskModule } from 'ng2-currency-mask';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -40,6 +41,7 @@ import { CurrencyMaskModule } from 'ng2-currency-mask';
     SelectButtonModule,
     TableModule,
     TooltipModule,
+    SharedModule
   ],
   exports: [
     LancamentoCadastroComponent,
