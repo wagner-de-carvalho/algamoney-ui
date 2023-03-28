@@ -15,8 +15,8 @@ export class LancamentoService {
 
     return this.http.get(`${this.lancamentosUrl}?resumo`, {headers})
       .toPromise()
-      .then((response: any) => console.log(response['content']))
-      .catch((err) => console.log(err));
+      .then((response: any) => response['content'])
+      .catch((err) => err);
 
       // .then((response: any) => response['content']);
   }
