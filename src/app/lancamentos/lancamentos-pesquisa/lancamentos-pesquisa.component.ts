@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { LancamentoService, LancamentoFiltro } from '../lancamento.service';
 import { LazyLoadEvent } from 'primeng/api';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-lancamentos-pesquisa',
@@ -8,7 +9,10 @@ import { LazyLoadEvent } from 'primeng/api';
   styleUrls: ['./lancamentos-pesquisa.component.css']
 })
 export class LancamentosPesquisaComponent implements OnInit {
-  constructor(private lancamentoService: LancamentoService) { }
+  constructor(
+    private lancamentoService: LancamentoService,
+    private messageService: MessageService
+  ) { }
 
   totalRegistros = 0;
   filtro = new LancamentoFiltro();
@@ -41,6 +45,7 @@ export class LancamentosPesquisaComponent implements OnInit {
     this.lancamentoService.excluir(lancamento.codigo)
     .then(() => {
       this.grid.reset();
+      this.messageService.add({ severity: 'success', detail: 'Lançamento excluído com sucesso!' })
     })
     .catch((err) => err)
   }
