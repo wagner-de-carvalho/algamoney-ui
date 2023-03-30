@@ -52,7 +52,6 @@ export class LancamentoService {
         };
         return resultado;
       })
-      .catch((err) => err);
   }
 
   excluir(codigo: number): Promise<void | null> {
