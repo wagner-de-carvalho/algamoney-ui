@@ -11,7 +11,7 @@ export class PessoaFiltro {
   providedIn: 'root'
 })
 export class PessoaService {
-  pessoassUrl = "http://localhost:8080/pessoas";
+  pessoasUrl = "http://localhost:8080/pessoas";
 
   constructor(private http: HttpClient) { }
 
@@ -27,7 +27,7 @@ export class PessoaService {
       params = params.set('nome', filtro.nome);
     }
 
-    return this.http.get(`${this.pessoassUrl}?resumo`, { headers, params })
+    return this.http.get(`${this.pessoasUrl}?resumo`, { headers, params })
       .toPromise()
       .then((response: any) => {
         const pessoas = response['content']
@@ -45,16 +45,25 @@ export class PessoaService {
     const headers = new HttpHeaders()
       .append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==');
 
-    return this.http.delete(`${this.pessoassUrl}/${codigo}`, { headers })
+    return this.http.delete(`${this.pessoasUrl}/${codigo}`, { headers })
       .toPromise()
       .then(() => null)
+  }
+
+  mudarStatus(codigo: number, ativo: boolean): Promise<void | any> {
+    const headers = new HttpHeaders()
+      .append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==')
+      .append('Content-Type', 'application/json');
+
+    return this.http.put(`${this.pessoasUrl}/${codigo}/ativo`, ativo, { headers })
+      .toPromise();
   }
 
   listarTodas(): Promise<any> {
     const headers = new HttpHeaders()
       .append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==');
 
-    return this.http.get(`${this.pessoassUrl}?resumo`, { headers })
+    return this.http.get(`${this.pessoasUrl}?resumo`, { headers })
       .toPromise()
       .then((response: any) => response['content'])
       .catch((err) => err);
