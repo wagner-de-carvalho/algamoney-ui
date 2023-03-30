@@ -5,7 +5,7 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { CoreModule } from './core/core.module';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { HttpClientModule } from '@angular/common/http';
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { ToastModule } from 'primeng/toast';
 
 import { LancamentosModule } from './lancamentos/lancamentos.module';
@@ -26,9 +26,10 @@ import { LancamentoService } from './lancamentos/lancamento.service';
     ToastModule,
   ],
   providers: [
+    ConfirmationService,
     LancamentoService,
     MessageService,
-    ConfirmationService
+    { provide: LOCALE_ID, useValue: 'pt-BR' }
   ],
   bootstrap: [AppComponent]
 })
