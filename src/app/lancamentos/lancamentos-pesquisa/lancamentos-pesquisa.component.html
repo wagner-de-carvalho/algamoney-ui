@@ -60,7 +60,7 @@
             <td class="my-col-data">{{lancamentos.dataVencimento | date: 'dd/MM/y'}}</td>
             <td class="my-col-valor">
               <span [style.color]="lancamentos.tipo === 'DESPESA' ? 'red' : 'blue'">
-                {{lancamentos.valor | currency: 'BRL'}}
+                {{lancamentos.valor |  number:'1.2-2':'pt-BR'}}
               </span>
             </td>
             <td class="my-col-acoes">
