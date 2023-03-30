@@ -5,14 +5,14 @@
     </div>
 
     <form class="grid" autocomplete="off" (ngSubmit)="pesquisar()">
-    <div class="col-12 p-fluid">
-      <label>Nome</label>
-      <input pInputText type="text" name="nome" [(ngModel)]="filtro.nome">
-    </div>
+      <div class="col-12 p-fluid">
+        <label>Nome</label>
+        <input pInputText type="text" name="nome" [(ngModel)]="filtro.nome">
+      </div>
 
-    <div class="col-12">
-      <button pButton type="submit" label="Pesquisar"></button>
-    </div>
+      <div class="col-12">
+        <button pButton type="submit" label="Pesquisar"></button>
+      </div>
     </form>
   <!--</div>-->
 
@@ -26,6 +26,7 @@
       [rows]="filtro.itensPorPagina"
       [lazy]="true"
       [totalRecords]="totalRegistros"
+      #tabela
       (onLazyLoad)="aoMudarPagina($event)"
         styleClass="p-datatable-gridlines">
         <ng-template pTemplate="header">
@@ -50,7 +51,7 @@
             </td>
             <td class="my-col-acoes">
               <a pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top"></a>
-              <button pButton icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top"></button>
+              <button pButton icon="pi pi-trash" pTooltip="Excluir" (click)="confirmarExclusao(pessoas)" tooltipPosition="top"></button>
             </td>
           </tr>
         </ng-template>
