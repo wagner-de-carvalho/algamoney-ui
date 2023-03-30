@@ -43,10 +43,16 @@ a.p-button:focus {
 .my-col-acoes {
   width: 120 px;
   display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .my-col-acoes > a {
   margin-right: 5px;
+}
+
+.my-col-acoes a, button {
+
 }
 
 .my-col-data {

@@ -8,11 +8,12 @@ import { LazyLoadEvent } from 'primeng/api';
   styleUrls: ['./lancamentos-pesquisa.component.css']
 })
 export class LancamentosPesquisaComponent implements OnInit {
+  constructor(private lancamentoService: LancamentoService) { }
+  
   totalRegistros = 0;
   filtro = new LancamentoFiltro();
   lancamentos = [];
 
-  constructor(private lancamentoService: LancamentoService) { }
 
   ngOnInit(): void {
     // this.pesquisar();

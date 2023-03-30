@@ -50,7 +50,6 @@ export class LancamentoService {
           lancamentos,
           total: response.totalElements
         };
-        console.log(resultado);
         return resultado;
       })
       .catch((err) => err);
