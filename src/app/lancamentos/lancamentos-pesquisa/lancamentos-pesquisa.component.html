@@ -1,31 +1,31 @@
 <div class="my-container">
   <!--<div class="grid">-->
-    <div class="col-12">
-      <h1>Lançamentos</h1>
-    </div>
+  <div class="col-12">
+    <h1>Lançamentos</h1>
+  </div>
 
-    <form class="grid" autocomplete="off" (ngSubmit)="pesquisar()">
+  <form class="grid" autocomplete="off" (ngSubmit)="pesquisar()">
 
-    <div class="col-12 p-fluid">
-      <label>Descrição</label>
-      <input pInputText type="text" name="descricao" [(ngModel)]="filtro.descricao">
-    </div>
+  <div class="col-12 p-fluid">
+    <label>Descrição</label>
+    <input pInputText type="text" name="descricao" [(ngModel)]="filtro.descricao">
+  </div>
 
-    <div class="col-12">
-      <label style="display: block">Vencimento</label>
-      <p-calendar dateFormat="dd/mm/yy" [inputStyle]="{ width: '120px' }" name="vencimentoInicio"
-        [(ngModel)]="filtro.dataVencimentoInicio">
-      </p-calendar>
+  <div class="col-12">
+    <label style="display: block">Vencimento</label>
+    <p-calendar dateFormat="dd/mm/yy" [inputStyle]="{ width: '120px' }" name="vencimentoInicio"
+      [(ngModel)]="filtro.dataVencimentoInicio">
+    </p-calendar>
 
-      <label class="my-margin">até</label>
-      <p-calendar dateFormat="dd/mm/yy" [inputStyle]="{ width: '120px' }" name="vencimentoFim"
-        [(ngModel)]="filtro.dataVencimentoFim">
-      </p-calendar>
-    </div>
+    <label class="my-margin">até</label>
+    <p-calendar dateFormat="dd/mm/yy" [inputStyle]="{ width: '120px' }" name="vencimentoFim"
+      [(ngModel)]="filtro.dataVencimentoFim">
+    </p-calendar>
+  </div>
 
-    <div class="col-12">
-      <button pButton type="submit" label="Pesquisar"></button>
-    </div>
+  <div class="col-12">
+    <button pButton type="submit" label="Pesquisar"></button>
+  </div>
   </form>
   <!--</div>-->
 
@@ -37,6 +37,7 @@
       [lazy]="true"
       [totalRecords]="totalRegistros"
       (onLazyLoad)="aoMudarPagina($event)"
+      #tabela
       styleClass="p-datatable-gridlines">
         <ng-template pTemplate="header">
           <tr>
@@ -62,10 +63,9 @@
                 {{lancamentos.valor | currency: 'BRL'}}
               </span>
             </td>
-
             <td class="my-col-acoes">
-              <a pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top"></a>
-              <button pButton icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top"></button>
+                <a pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top"></a>
+                <button pButton icon="pi pi-trash" pTooltip="Excluir" (click)="excluir(lancamentos)" tooltipPosition="top"></button>
             </td>
           </tr>
         </ng-template>
