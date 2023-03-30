@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { LancamentoService, LancamentoFiltro } from '../lancamento.service';
-import { LazyLoadEvent } from 'primeng/api';
-import { MessageService } from 'primeng/api';
+import { LazyLoadEvent, ConfirmationService, MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-lancamentos-pesquisa',
@@ -11,7 +10,8 @@ import { MessageService } from 'primeng/api';
 export class LancamentosPesquisaComponent implements OnInit {
   constructor(
     private lancamentoService: LancamentoService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private confirmation: ConfirmationService
   ) { }
 
   totalRegistros = 0;
@@ -36,18 +36,26 @@ export class LancamentosPesquisaComponent implements OnInit {
   aoMudarPagina(event: LazyLoadEvent) {
     const first = event.first == undefined ? 1 : event.first;
     const rows = event.rows == undefined ? 1 : event.rows;
-    const pagina = first/rows;
+    const pagina = first / rows;
     this.pesquisar(pagina);
   }
 
   excluir(lancamento: any) {
-    console.log(lancamento)
     this.lancamentoService.excluir(lancamento.codigo)
-    .then(() => {
-      this.grid.reset();
-      this.messageService.add({ severity: 'success', detail: 'Lançamento excluído com sucesso!' })
+      .then(() => {
+        this.grid.reset();
+        this.messageService.add({ severity: 'success', detail: 'Lançamento excluído com sucesso!' })
+      })
+      .catch((err) => err)
+  }
+
+  confirmarExclusao(lancamento: any) {
+    this.confirmation.confirm({
+      message: 'Tem certeza que deseja excluir?',
+      accept: () => {
+        this.excluir(lancamento);
+      }
     })
-    .catch((err) => err)
   }
 
 }

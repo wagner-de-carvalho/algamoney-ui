@@ -1,8 +1,9 @@
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { CoreModule } from './core/core.module';
-import { MessageService } from 'primeng/api';
+import { ConfirmationService, MessageService } from 'primeng/api';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { ToastModule } from 'primeng/toast';
@@ -17,13 +18,18 @@ import { LancamentoService } from './lancamentos/lancamento.service';
   imports: [
     BrowserAnimationsModule,
     BrowserModule,
+    ConfirmDialogModule,
     CoreModule,
     HttpClientModule,
     LancamentosModule,
     PessoasModule,
     ToastModule,
   ],
-  providers: [LancamentoService, MessageService],
+  providers: [
+    LancamentoService,
+    MessageService,
+    ConfirmationService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
