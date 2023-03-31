@@ -10,6 +10,9 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The appli
 Open the backend where the `jar` is located and execute the following code:
 - `java -jar --spring.datasource.username=root --spring.datasource.password=Qplim@3758 --algamoney.origin-permitida=http://localhost:4200`
 
+## Kill process on port
+- `fuser -n tcp -k 9001` = kills process on port 9001.
+
 ## Code scaffolding
 
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
