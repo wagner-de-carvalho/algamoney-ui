@@ -64,7 +64,9 @@
               </span>
             </td>
             <td class="my-col-acoes">
-                <a pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top"></a>
+                <a pButton icon="pi pi-pencil" pTooltip="Editar"
+                tooltipPosition="top"
+                [routerLink]="['/lancamentos', lancamentos.codigo]"></a>
                 <button pButton icon="pi pi-trash" pTooltip="Excluir" (click)="confirmarExclusao(lancamentos)" tooltipPosition="top"></button>
             </td>
           </tr>
