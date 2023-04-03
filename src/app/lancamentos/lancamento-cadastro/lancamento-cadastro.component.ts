@@ -6,7 +6,7 @@ import { Lancamento } from 'src/app/core/model';
 import { PessoaService } from 'src/app/pessoas/pessoa.service';
 import { LancamentoService } from '../lancamento.service';
 import { MessageService } from 'primeng/api';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-lancamento-cadastro',
@@ -28,13 +28,14 @@ export class LancamentoCadastroComponent implements OnInit {
     private lancamentoService: LancamentoService,
     private messageService: MessageService, // Componente Toast
     private pessoaService: PessoaService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
     const codigoLancamento = this.route.snapshot.params['codigo'];
 
-    if (codigoLancamento && codigoLancamento !== 'novo') {
+    if (codigoLancamento) {
       this.carregarLancamento(codigoLancamento)
     }
 
@@ -48,10 +49,10 @@ export class LancamentoCadastroComponent implements OnInit {
 
   adicionarLancamento(form: NgForm) {
     this.lancamentoService.adicionar(this.lancamento)
-      .then(() => {
+      .then(lancamentoAdicionado => {
         this.messageService.add({ severity: 'success', detail: 'Lançamento adicionado com sucesso!' })
-        form.reset();
-        this.lancamento = new Lancamento();
+
+        this.router.navigate(['/lancamentos', lancamentoAdicionado.codigo]);
       })
       .catch(erro => this.errorHandler.handle(erro));
   }
@@ -89,6 +90,16 @@ export class LancamentoCadastroComponent implements OnInit {
           .map((p: any) => ({ label: p.nome, value: p.codigo }));
       })
       .catch(erro => this.errorHandler.handle(erro));
+  }
+
+  novo(form: NgForm) {
+    form.reset();
+
+    setTimeout(() => {
+      this.lancamento = new Lancamento();
+    }, 1);
+
+    this.router.navigate(['/lancamentos/novo']);
   }
 
   salvar(form: NgForm) {

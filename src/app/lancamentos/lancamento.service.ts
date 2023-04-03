@@ -22,7 +22,7 @@ export class LancamentoService {
     private datePipe: DatePipe
   ) { }
 
-  adicionar(lancamento: Lancamento): Promise<Lancamento | undefined> {
+  adicionar(lancamento: Lancamento): Promise<Lancamento | any> {
     const headers = new HttpHeaders()
       .append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==')
       .append('Content-Type', 'application/json');
