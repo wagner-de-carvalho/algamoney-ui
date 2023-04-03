@@ -42,3 +42,9 @@
   font-weight: bold;
   text-transform: uppercase;
 }
+
+.my-navbar-menuitem.ativo {
+  background-color: #494541;
+}
+
+
