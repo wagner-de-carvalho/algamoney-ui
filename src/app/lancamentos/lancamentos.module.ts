@@ -11,12 +11,12 @@ import { TooltipModule } from 'primeng/tooltip';
 import { SelectButtonModule } from 'primeng/selectbutton';
 import { InputTextModule } from 'primeng/inputtext';
 import { InputTextareaModule } from 'primeng/inputtextarea';
-import { AppRoutingModule } from '../app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { CalendarModule } from 'primeng/calendar';
 import { CurrencyMaskModule } from 'ng2-currency-mask';
 import { SharedModule } from '../shared/shared.module';
 import { CoreModule } from '../core/core.module';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -26,7 +26,6 @@ import { CoreModule } from '../core/core.module';
     LancamentosPesquisaComponent,
   ],
   imports: [
-    AppRoutingModule,
     BrowserModule,
     BrowserAnimationsModule,
     ButtonModule,
@@ -38,6 +37,7 @@ import { CoreModule } from '../core/core.module';
     FormsModule,
     InputTextModule,
     InputTextareaModule,
+    RouterModule,
     SelectButtonModule,
     TableModule,
     TooltipModule,

@@ -7,6 +7,7 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ToastModule } from 'primeng/toast';
 import { ConfirmationService } from 'primeng/api';
 import { LancamentoService } from '../lancamentos/lancamento.service';
+import { RouterModule } from '@angular/router';
 
 registerLocaleData(localePt, 'pt-BR');
 
@@ -16,6 +17,7 @@ registerLocaleData(localePt, 'pt-BR');
     CommonModule,
     ConfirmDialogModule,
     ToastModule,
+    RouterModule
 
   ],
   exports: [NavbarComponent, ToastModule, ConfirmDialogModule],
@@ -24,7 +26,7 @@ registerLocaleData(localePt, 'pt-BR');
     DatePipe,
     ErrorHandlerService,
     LancamentoService,
-    { provide: LOCALE_ID, useValue: 'pt-BR' },
+    { provide: LOCALE_ID, useValue: 'pt-BR' }
   ]
 })
 export class CoreModule { }
