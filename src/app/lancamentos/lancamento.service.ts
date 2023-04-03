@@ -25,7 +25,7 @@ export class LancamentoService {
   adicionar(lancamento: Lancamento): Promise<Lancamento | undefined> {
     const headers = new HttpHeaders()
       .append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==')
-    .append('Content-Type', 'application/json');
+      .append('Content-Type', 'application/json');
 
     return this.http.post<Lancamento>(this.lancamentosUrl, JSON.stringify(lancamento), { headers })
       .toPromise()
@@ -74,25 +74,31 @@ export class LancamentoService {
       })
   }
 
-  atualizar(lancamento: Lancamento): Promise<Lancamento | any> {
+  atualizar(lancamento: Lancamento): Promise<Lancamento> {
     const headers = new HttpHeaders()
       .append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==')
       .append('Content-Type', 'application/json');
 
-    return this.http.put<Lancamento>(`${this.lancamentosUrl}/${lancamento.codigo}`, lancamento, { headers })
-      .toPromise();
+    return this.http.put<Lancamento>(`${this.lancamentosUrl}/${lancamento.codigo}`, JSON.stringify(lancamento), { headers })
+      .toPromise()
+      .then((response: any) => {
+        const lancamentoAlterado = response;
+        this.converterStringsParaDatas([lancamentoAlterado]);
+
+        return lancamentoAlterado;
+      });
   }
 
   buscarPorCodigo(codigo: number): Promise<Lancamento> {
     const headers = new HttpHeaders()
       .append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==');
 
-    return this.http.get <Lancamento>(`${this.lancamentosUrl}/${codigo}`, { headers })
+    return this.http.get<Lancamento>(`${this.lancamentosUrl}/${codigo}`, { headers })
       .toPromise()
       .then((response: any) => {
         this.converterStringsParaDatas([response]);
-        console.log("SERVICE LANCAMENTOS RESPONSE => ");
-        console.log(response);
+
+
         return response;
       });
   }

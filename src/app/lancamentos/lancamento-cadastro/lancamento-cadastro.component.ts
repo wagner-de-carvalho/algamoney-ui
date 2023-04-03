@@ -31,20 +31,39 @@ export class LancamentoCadastroComponent implements OnInit {
     private route: ActivatedRoute
   ) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     const codigoLancamento = this.route.snapshot.params['codigo'];
-    console.log(`CÓDIGO => ${codigoLancamento}`);
 
-    if (codigoLancamento) {
-      this.carregarLancamento(codigoLancamento);
+    if (codigoLancamento && codigoLancamento !== 'novo') {
+      this.carregarLancamento(codigoLancamento)
     }
 
-    this.carregarCategorias();
-    this.carregarPessoas();
+    this.carregarCategorias()
+    this.carregarPessoas()
   }
 
   get editando() {
     return Boolean(this.lancamento.codigo);
+  }
+
+  adicionarLancamento(form: NgForm) {
+    this.lancamentoService.adicionar(this.lancamento)
+      .then(() => {
+        this.messageService.add({ severity: 'success', detail: 'Lançamento adicionado com sucesso!' })
+        form.reset();
+        this.lancamento = new Lancamento();
+      })
+      .catch(erro => this.errorHandler.handle(erro));
+  }
+
+  atualizarLancamento(form: NgForm) {
+    this.lancamentoService.atualizar(this.lancamento)
+    .then(lancamento => {
+      this.lancamento = lancamento;
+
+      this.messageService.add({ severity: 'success', detail: 'Lançamento alterado com sucesso!' });
+    })
+    .catch((erro) => this.errorHandler.handle(erro));
   }
 
   carregarCategorias() {
@@ -73,12 +92,11 @@ export class LancamentoCadastroComponent implements OnInit {
   }
 
   salvar(form: NgForm) {
-    this.lancamentoService.adicionar(this.lancamento)
-      .then(() => {
-        this.messageService.add({ severity: 'success', detail: 'Lançamento adicionado com sucesso!' })
-        form.reset();
-        this.lancamento = new Lancamento();
-      })
-      .catch(erro => this.errorHandler.handle(erro));
+    if (this.editando) {
+      this.atualizarLancamento(form);
+    } else {
+      this.adicionarLancamento(form);
+    }
   }
+
 }

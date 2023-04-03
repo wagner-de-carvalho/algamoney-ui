@@ -12,9 +12,6 @@ export class ErrorHandlerService {
   handle(errorResponse: any) {
     let msg: string;
 
-    console.log("errorResponse =>")
-    console.log(errorResponse)
-
     if (typeof errorResponse === 'string') {
       msg = errorResponse;
     } else if (errorResponse instanceof HttpErrorResponse
