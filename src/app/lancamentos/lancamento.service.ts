@@ -91,7 +91,8 @@ export class LancamentoService {
       .toPromise()
       .then((response: any) => {
         this.converterStringsParaDatas([response]);
-
+        console.log("SERVICE LANCAMENTOS RESPONSE => ");
+        console.log(response);
         return response;
       });
   }
