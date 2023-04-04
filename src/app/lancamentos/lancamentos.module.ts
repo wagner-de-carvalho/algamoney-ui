@@ -16,9 +16,8 @@ import { CalendarModule } from 'primeng/calendar';
 import { CurrencyMaskModule } from 'ng2-currency-mask';
 import { SharedModule } from '../shared/shared.module';
 import { CoreModule } from '../core/core.module';
+import { LancamentosRoutingModule } from './lancamentos-routing.module';
 import { RouterModule } from '@angular/router';
-
-
 
 @NgModule({
   declarations: [
@@ -37,6 +36,7 @@ import { RouterModule } from '@angular/router';
     FormsModule,
     InputTextModule,
     InputTextareaModule,
+    LancamentosRoutingModule,
     RouterModule,
     SelectButtonModule,
     TableModule,
