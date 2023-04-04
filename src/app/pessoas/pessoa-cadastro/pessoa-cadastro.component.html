@@ -3,7 +3,7 @@
 
     <div class="grid">
       <div class="col-12">
-        <h1>Nova Pessoa</h1>
+        <h1>{{ editando ? 'Edição de' : 'Nova' }} Pessoa</h1>
       </div>
 
       <div class="col-12 p-fluid">
@@ -71,12 +71,11 @@
 
       <div class="col-12">
         <button pButton type="submit" label="Salvar" [disabled]="pessoasForm.invalid"></button>
-        <button pButton type="button" label="Novo" class="p-button-info"></button>
+        <button pButton type="button" label="Novo" class="p-button-info" (click)="nova(pessoasForm)"></button>
 
-        <a href="javascript:;">Voltar para a pesquisa</a>
+        <a [routerLink]="['/pessoas']">Voltar para a pesquisa</a>
       </div>
     </div>
 
   </form>
-
 </div>

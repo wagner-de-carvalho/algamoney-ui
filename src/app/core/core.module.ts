@@ -17,10 +17,9 @@ registerLocaleData(localePt, 'pt-BR');
   declarations: [NavbarComponent, PaginaNaoEncontradaComponent],
   imports: [
     CommonModule,
+    RouterModule,
     ConfirmDialogModule,
-    ToastModule,
-    RouterModule
-
+    ToastModule
   ],
   exports: [NavbarComponent, ToastModule, ConfirmDialogModule],
   providers: [

@@ -10,6 +10,7 @@ import { PessoaCadastroComponent } from './pessoa-cadastro/pessoa-cadastro.compo
 import { PessoasPesquisaComponent } from './pessoas-pesquisa/pessoas-pesquisa.component';
 import { SharedModule } from '../shared/shared.module';
 import { RouterModule } from '@angular/router';
+import { PessoasRoutingModule } from './pessoas-routing.module';
 
 
 @NgModule({
@@ -20,13 +21,16 @@ import { RouterModule } from '@angular/router';
   imports: [
     CommonModule,
     FormsModule,
+    RouterModule,
+
     InputTextModule,
     ButtonModule,
     TableModule,
     TooltipModule,
     InputMaskModule,
-    RouterModule,
+
     SharedModule,
+    PessoasRoutingModule
   ],
   exports: []
 })
