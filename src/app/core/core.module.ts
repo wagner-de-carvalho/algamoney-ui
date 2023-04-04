@@ -9,6 +9,7 @@ import { ConfirmationService } from 'primeng/api';
 import { LancamentoService } from '../lancamentos/lancamento.service';
 import { RouterModule } from '@angular/router';
 import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada.component';
+import { Title } from '@angular/platform-browser';
 
 registerLocaleData(localePt, 'pt-BR');
 
@@ -27,6 +28,7 @@ registerLocaleData(localePt, 'pt-BR');
     DatePipe,
     ErrorHandlerService,
     LancamentoService,
+    Title,
     { provide: LOCALE_ID, useValue: 'pt-BR' }
   ]
 })
