@@ -25,13 +25,13 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     AppComponent
   ],
   imports: [
-    AppRoutingModule,
     BrowserAnimationsModule,
     BrowserModule,
     CoreModule,
     HttpClientModule,
     LancamentosModule,
     PessoasModule,
+    AppRoutingModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

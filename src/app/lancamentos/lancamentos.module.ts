@@ -17,6 +17,7 @@ import { CurrencyMaskModule } from 'ng2-currency-mask';
 import { SharedModule } from '../shared/shared.module';
 import { CoreModule } from '../core/core.module';
 import { RouterModule } from '@angular/router';
+import { LancamentosRoutingModule } from './lancamentos-routing.module';
 
 @NgModule({
   declarations: [
@@ -35,8 +36,7 @@ import { RouterModule } from '@angular/router';
     FormsModule,
     InputTextModule,
     InputTextareaModule,
-    RouterModule,
-    RouterModule,
+    LancamentosRoutingModule,
     SelectButtonModule,
     TableModule,
     TooltipModule,
