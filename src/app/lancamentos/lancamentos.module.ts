@@ -43,9 +43,6 @@ import { RouterModule } from '@angular/router';
     TooltipModule,
     SharedModule
   ],
-  exports: [
-    LancamentoCadastroComponent,
-    LancamentosPesquisaComponent
-  ]
+  exports: []
 })
 export class LancamentosModule { }
