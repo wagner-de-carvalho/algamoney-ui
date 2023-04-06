@@ -10,7 +10,7 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The appli
 Open the backend where the `jar` is located and execute the following code:
 - `java -jar --spring.datasource.username=root --spring.datasource.password=Qplim@3758 --algamoney.origin-permitida=http://localhost:4200`
 Adding security parameters:
-- `java -jar --spring.datasource.username=root --spring.datasource.password=Qplim@3758 --algamoney.origin-permitida=http://localhost:4200 --spring.profiles.active=oauth-security`
+- `java -jar --spring.datasource.username=root --spring.datasource.password=Qplim@3758 --algamoney.origin-permitida=http://localhost:8000 --spring.profiles.active=oauth-security`
 
 ## Kill process on port
 - `fuser -n tcp -k 9001` = kills process on port 9001.
