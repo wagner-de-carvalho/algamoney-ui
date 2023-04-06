@@ -26,8 +26,8 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   imports: [
     BrowserAnimationsModule,
     BrowserModule,
-    CoreModule,
     HttpClientModule,
+    CoreModule,
     LancamentosModule,
     PessoasModule,
     SegurancaModule,

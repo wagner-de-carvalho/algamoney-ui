@@ -10,6 +10,7 @@ import { LancamentoService } from '../lancamentos/lancamento.service';
 import { RouterModule } from '@angular/router';
 import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada.component';
 import { Title } from '@angular/platform-browser';
+import { AuthService } from '../seguranca/auth.service';
 
 registerLocaleData(localePt, 'pt-BR');
 
@@ -26,6 +27,7 @@ registerLocaleData(localePt, 'pt-BR');
     ConfirmationService,
     DatePipe,
     ErrorHandlerService,
+    AuthService,
     LancamentoService,
     Title,
     { provide: LOCALE_ID, useValue: 'pt-BR' }
