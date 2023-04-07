@@ -40,9 +40,9 @@ export class AuthService {
     const headers = new HttpHeaders()
       .append('Content-Type', 'application/x-www-form-urlencoded')
       .append('Authorization', 'Basic YW5ndWxhcjpAbmd1bEByMA==');
-    
+
     const body = 'grant_type=refresh_token';
-    
+
     return this.http
       .post(this.oauthTokenUrl, body, { headers, withCredentials: true })
       .toPromise()
@@ -65,6 +65,15 @@ export class AuthService {
 
   temPermissao(permissao: string) {
     return this.jwtPayload && this.jwtPayload.authorities.includes(permissao);
+  }
+
+  temQualquerPermissao(roles: Array<string>) {
+    for (const role of roles) {
+      if (this.temPermissao(role)) {
+        return true;
+      }
+    }
+    return false;
   }
 
   private armazenarToken(access_token: string) {

@@ -11,17 +11,17 @@ import { RouterModule } from '@angular/router';
 import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada.component';
 import { Title } from '@angular/platform-browser';
 import { AuthService } from '../seguranca/auth.service';
+import { NaoAutorizadoComponent } from './nao-autorizado.component';
 
 registerLocaleData(localePt, 'pt-BR');
 
 @NgModule({
-  declarations: [NavbarComponent, PaginaNaoEncontradaComponent],
-  imports: [
-    CommonModule,
-    RouterModule,
-    ConfirmDialogModule,
-    ToastModule
+  declarations: [
+    NavbarComponent,
+    PaginaNaoEncontradaComponent,
+    NaoAutorizadoComponent
   ],
+  imports: [CommonModule, RouterModule, ConfirmDialogModule, ToastModule],
   exports: [NavbarComponent, ToastModule, ConfirmDialogModule],
   providers: [
     ConfirmationService,
@@ -30,7 +30,7 @@ registerLocaleData(localePt, 'pt-BR');
     AuthService,
     LancamentoService,
     Title,
-    { provide: LOCALE_ID, useValue: 'pt-BR' }
-  ]
+    { provide: LOCALE_ID, useValue: 'pt-BR' },
+  ],
 })
-export class CoreModule { }
+export class CoreModule {}
