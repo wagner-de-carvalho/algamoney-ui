@@ -13,6 +13,6 @@
     <li class="my-navbar-usuario">{{ usuarioLogado }}</li>
     <li class="my-navbar-menuitem" routerLinkActive="ativo" *ngIf="temPermissao('ROLE_PESQUISAR_LANCAMENTO')"><a routerLink="/lancamentos">Lançamentos</a></li>
     <li class="my-navbar-menuitem" routerLinkActive="ativo" *ngIf="temPermissao('ROLE_PESQUISAR_PESSOA')"><a routerLink="/pessoas">Pessoas</a></li>
-    <li class="my-navbar-menuitem"><a routerLink="#">Log out</a></li>
+    <li class="my-navbar-menuitem" (click)="logout()"><a routerLink="#">Log out</a></li>
   </ul>
 </nav>
