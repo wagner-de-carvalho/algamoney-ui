@@ -3,11 +3,12 @@ import { LancamentoService, LancamentoFiltro } from '../lancamento.service';
 import { LazyLoadEvent, ConfirmationService, MessageService } from 'primeng/api';
 import { ErrorHandlerService } from 'src/app/core/error-handler.service';
 import { Title } from '@angular/platform-browser';
+import { AuthService } from 'src/app/seguranca/auth.service';
 
 @Component({
   selector: 'app-lancamentos-pesquisa',
   templateUrl: './lancamentos-pesquisa.component.html',
-  styleUrls: ['./lancamentos-pesquisa.component.css']
+  styleUrls: ['./lancamentos-pesquisa.component.css'],
 })
 export class LancamentosPesquisaComponent implements OnInit {
   constructor(
@@ -15,27 +16,28 @@ export class LancamentosPesquisaComponent implements OnInit {
     private errorHandler: ErrorHandlerService,
     private lancamentoService: LancamentoService,
     private messageService: MessageService, // Componente Toast
+    private auth: AuthService,
     private title: Title
-  ) { }
+  ) {}
 
   totalRegistros = 0;
   filtro = new LancamentoFiltro();
   lancamentos = [];
   @ViewChild('tabela') grid: any;
 
-
   ngOnInit(): void {
-    this.title.setTitle('Pesquisa de Lançamentos')
+    this.title.setTitle('Pesquisa de Lançamentos');
   }
 
   pesquisar(pagina = 0) {
     this.filtro.pagina = pagina;
-    this.lancamentoService.pesquisar(this.filtro)
-      .then(resultado => {
+    this.lancamentoService
+      .pesquisar(this.filtro)
+      .then((resultado) => {
         this.totalRegistros = resultado.total;
         this.lancamentos = resultado.lancamentos;
       })
-      .catch(erro => this.errorHandler.handle(erro));
+      .catch((erro) => this.errorHandler.handle(erro));
   }
 
   aoMudarPagina(event: LazyLoadEvent) {
@@ -46,12 +48,16 @@ export class LancamentosPesquisaComponent implements OnInit {
   }
 
   excluir(lancamento: any) {
-    this.lancamentoService.excluir(lancamento.codigo)
+    this.lancamentoService
+      .excluir(lancamento.codigo)
       .then(() => {
         this.grid.reset();
-        this.messageService.add({ severity: 'success', detail: 'Lançamento excluído com sucesso!' })
+        this.messageService.add({
+          severity: 'success',
+          detail: 'Lançamento excluído com sucesso!',
+        });
       })
-      .catch(erro => this.errorHandler.handle(erro));
+      .catch((erro) => this.errorHandler.handle(erro));
   }
 
   confirmarExclusao(lancamento: any) {
@@ -59,8 +65,11 @@ export class LancamentosPesquisaComponent implements OnInit {
       message: 'Tem certeza que deseja excluir?',
       accept: () => {
         this.excluir(lancamento);
-      }
-    })
+      },
+    });
   }
 
+  naoTemPermissao(permissao: string) {
+    return !this.auth.temPermissao(permissao);
+  }
 }
