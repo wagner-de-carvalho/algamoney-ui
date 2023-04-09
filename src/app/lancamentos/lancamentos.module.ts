@@ -25,8 +25,6 @@ import { LancamentosRoutingModule } from './lancamentos-routing.module';
     LancamentosPesquisaComponent,
   ],
   imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
     ButtonModule,
     CalendarModule,
     CommonModule,
